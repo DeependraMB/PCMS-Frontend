@@ -28,7 +28,7 @@ const FeedbackForm = () => {
       role: role
     };
 
-   axios.post("http://localhost:5000/feedback/submit-feedback", feedbackWithUserData).then((res)=>{
+   axios.post(`${process.env.REACT_APP_BASE_URL}/feedback/submit-feedback`, feedbackWithUserData).then((res)=>{
     console.log(res);
     toast.success(res.data.message);
    })

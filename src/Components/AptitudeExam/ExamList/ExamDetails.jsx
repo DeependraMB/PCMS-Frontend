@@ -11,7 +11,7 @@ function ExamDetails({ exam }) {
     try {
       if (!showQuestions) {
         const response = await fetch(
-          `http://localhost:5000/exams/questions/${exam._id}`
+          `${process.env.REACT_APP_BASE_URL}/exams/questions/${exam._id}`
         );
         const data = await response.json();
         setQuestions(data);

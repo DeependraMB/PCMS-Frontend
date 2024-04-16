@@ -45,7 +45,7 @@ const ExamCreator = () => {
 
     try {
       const examResponse = await axios.post(
-        "http://localhost:5000/exams/exam-details",
+        `${process.env.REACT_APP_BASE_URL}/exams/exam-details`,
         examWithAuthor
       );
       console.log("Exam Response:", examResponse.data);
@@ -58,7 +58,7 @@ const ExamCreator = () => {
 
     // Step 3: Send the questions to the backend
     const questionsResponse = await axios.post(
-      `http://localhost:5000/exams/questions/${examResponse.data._id}`,
+      `${process.env.REACT_APP_BASE_URL}/exams/questions/${examResponse.data._id}`,
       questionsWithExamId
     );
     console.log("Questions Response:", questionsResponse.data);

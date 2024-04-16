@@ -30,7 +30,7 @@ const NotificationsPage = () => {
     try {
       const response = await axios.get(
         // Replace with your actual API endpoint
-        `http://localhost:5000/send-notification/received-notifications/${auth.email}`
+        `${process.env.REACT_APP_BASE_URL}/send-notification/received-notifications/${auth.email}`
       );
       setNotifications(response.data);
     } catch (error) {

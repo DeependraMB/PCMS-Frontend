@@ -114,7 +114,7 @@ export default function StudentDash(props) {
   const fetchNotifications = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/send-notification/receive-notifications/${auth.email}`
+        `${process.env.REACT_APP_BASE_URL}/send-notification/receive-notifications/${auth.email}`
       ); // Replace with your actual API endpoint
       setNotifications(response.data);
     } catch (error) {
@@ -125,7 +125,7 @@ export default function StudentDash(props) {
   const handleNotificationClick = async (notificationId) => {
     try {
       await axios.put(
-        `http://localhost:5000/send-notification/notifications/${notificationId}`
+        `${process.env.REACT_APP_BASE_URL}/send-notification/notifications/${notificationId}`
       );
 
       // Update the UI to mark the notification as read and remove it from the list

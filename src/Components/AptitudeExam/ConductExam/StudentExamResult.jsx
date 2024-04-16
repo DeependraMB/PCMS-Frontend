@@ -11,7 +11,7 @@ function Result() {
   useEffect(() => {
     const fetchResult = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/exams/result/${examId}`);
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/exams/result/${examId}`);
         const data = await response.json();
         setResult(data);
       } catch (error) {

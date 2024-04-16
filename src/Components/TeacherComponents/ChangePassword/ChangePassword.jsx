@@ -31,7 +31,7 @@ function ChangePassword() {
 
     axios
       .post(
-        `http://localhost:5000/teacher-change-password/teacher-change-password/teacher-change-password/${auth.email}`,
+        `${process.env.REACT_APP_BASE_URL}/teacher-change-password/teacher-change-password/teacher-change-password/${auth.email}`,
         data
       )
       .then((response) => {

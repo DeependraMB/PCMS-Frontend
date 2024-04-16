@@ -92,7 +92,7 @@ export default function TeacherAddForm() {
     async function fetchDepartments() {
       try {
         const response = await axios.get(
-          "http://localhost:5000/departments/departments"
+          `${process.env.REACT_APP_BASE_URL}/departments/departments`
         );
         setDepartments(response.data);
       } catch (error) {
@@ -107,7 +107,7 @@ export default function TeacherAddForm() {
     async function fetchTeacherDetails() {
       try {
         const response = await axios.get(
-            `http://localhost:5000/get-teacher/${auth._id}`
+            `${process.env.REACT_APP_BASE_URL}/get-teacher/${auth._id}`
           );
           
           setTeacher(response.data);
@@ -134,7 +134,7 @@ export default function TeacherAddForm() {
     console.log(data); // Check the data before sending the request
     try {
       const response = await axios.post(
-        "http://localhost:5000/teacher/register/register",
+        `${process.env.REACT_APP_BASE_URL}/teacher/register/register`,
         data
       );
 

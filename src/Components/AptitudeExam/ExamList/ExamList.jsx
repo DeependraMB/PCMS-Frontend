@@ -16,7 +16,7 @@ function ExamList() {
 
   useEffect(() => {
     // Fetch exams created by the logged-in teacher
-    fetch(`http://localhost:5000/exams/exams/${teacherEmail}`)
+    fetch(`${process.env.REACT_APP_BASE_URL}/exams/exams/${teacherEmail}`)
       .then((response) => response.json())
       .then((data) => setExams(data))
       .catch((error) => console.error('Error fetching exams:', error));

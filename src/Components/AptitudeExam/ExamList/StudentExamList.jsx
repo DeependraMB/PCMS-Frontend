@@ -22,12 +22,12 @@ function ExamList() {
     const fetchData = async () => {
       try {
         const userByIdResponse = await axios.get(
-          `http://localhost:5000/get-user-byid/get-user-byid/get-user-byid/${studentId}`
+          `${process.env.REACT_APP_BASE_URL}/get-user-byid/get-user-byid/get-user-byid/${studentId}`
         );
         setStudentData(userByIdResponse.data);
 
         const teacherDetailsResponse = await axios.get(
-            `http://localhost:5000/get-teacher/get-teacher/get-teacher/${userByIdResponse.data.departmentId}/${userByIdResponse.data.batch}`
+            `${process.env.REACT_APP_BASE_URL}/get-teacher/get-teacher/get-teacher/${userByIdResponse.data.departmentId}/${userByIdResponse.data.batch}`
           );
           setTeacherData(teacherDetailsResponse.data);
       } catch (error) {
@@ -40,7 +40,7 @@ function ExamList() {
 
   useEffect(() => {
     // Fetch exams created by the logged-in teacher
-    fetch(`http://localhost:5000/exams/exams/${teacherData.email}`)
+    fetch(`${process.env.REACT_APP_BASE_URL}/exams/exams/${teacherData.email}`)
       .then((response) => response.json())
       .then((data) => setExams(data))
       .catch((error) => console.error('Error fetching exams:', error));

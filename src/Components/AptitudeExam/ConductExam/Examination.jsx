@@ -27,14 +27,14 @@ function Examination() {
     const fetchExamDetails = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/exams/exam-values/${examId}`
+          `${process.env.REACT_APP_BASE_URL}/exams/exam-values/${examId}`
         );
         const data = await response.json();
 
         setExamDetails(data);
         setTimeRemaining(data[0].duration * 60);
         const questionResponse = await fetch(
-          `http://localhost:5000/exams/questions/${examId}`
+          `${process.env.REACT_APP_BASE_URL}/exams/questions/${examId}`
         );
         const questions = await questionResponse.json();
 
@@ -77,7 +77,7 @@ function Examination() {
   const handleSubmitExam = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/exams/check-answers",
+        `${process.env.REACT_APP_BASE_URL}/exams/check-answers`,
         {
           method: "POST",
           headers: {

@@ -31,7 +31,7 @@ export default function NotesMaterial() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/get-pdfs");
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/get-pdfs`);
         console.log(response.data);
         setPDFs(
           response.data.map((pdf, index) => ({
@@ -149,7 +149,7 @@ export default function NotesMaterial() {
                           variant="contained"
                           color="primary"
                           component={Link}
-                          to={`http://localhost:5000/notes/download/${row._id}`}
+                          to={`${process.env.REACT_APP_BASE_URL}/notes/download/${row._id}`}
                           download
                         >
                           Download

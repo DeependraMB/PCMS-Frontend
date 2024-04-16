@@ -16,7 +16,7 @@ function DeclarationForm({ onBack, formData }) {
 
     // Make a GET request to the /generate-userdata-pdf/:email endpoint
     axios
-      .get(`http://localhost:5000/generate-userdata-pdf/generate-userdata-pdf/${auth.email}`, {
+      .get(`${process.env.REACT_APP_BASE_URL}/generate-userdata-pdf/generate-userdata-pdf/${auth.email}`, {
         responseType: "blob",
       })
       .then((response) => {

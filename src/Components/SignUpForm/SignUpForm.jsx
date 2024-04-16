@@ -44,7 +44,7 @@ export default function SignUpForm() {
     async function fetchDepartments() {
       try {
         const response = await axios.get(
-          "http://localhost:5000/departments/departments"
+          `${process.env.REACT_APP_BASE_URL}/departments/departments`
         );
         setDepartments(response.data);
         console.log(response.data);
@@ -60,7 +60,7 @@ export default function SignUpForm() {
     console.log(email);
     try {
       const response = await axios.post(
-        "http://localhost:5000/verify-email/verify-email",
+        `${process.env.REACT_APP_BASE_URL}/verify-email/verify-email`,
         { email }
       );
     } catch (error) {
@@ -77,7 +77,7 @@ export default function SignUpForm() {
     console.log(data);
     try {
       const response = await axios.post(
-        "http://localhost:5000/student/register/register",
+        `${process.env.REACT_APP_BASE_URL}/student/register/register`,
         data
       );
 

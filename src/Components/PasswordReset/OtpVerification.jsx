@@ -63,7 +63,7 @@ function OtpVerification() {
   const onSubmit = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/user/reset-password/reset-password",
+        `${process.env.REACT_APP_BASE_URL}/user/reset-password/reset-password`,
         {
           method: "POST",
           headers: {

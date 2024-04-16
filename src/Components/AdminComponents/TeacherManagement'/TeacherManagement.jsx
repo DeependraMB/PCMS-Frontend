@@ -20,7 +20,7 @@ export default function TeacherManagement() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/get-teachers/get-teachers");
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/get-teachers/get-teachers`);
         const teacherData = response.data.map(async (teacher, index) => {
           const departmentName = await fetchDepartmentName(teacher.departmentId);
           console.log(departmentName)
@@ -43,7 +43,7 @@ export default function TeacherManagement() {
 
   const fetchDepartmentName = async (departmentId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/get-department-name/get-department-name/get-department-name/${departmentId}`);
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/get-department-name/get-department-name/get-department-name/${departmentId}`);
       return response.data.departmentName;
     } catch (error) {
       console.error(`Error fetching department name for ID ${departmentId}:`, error);

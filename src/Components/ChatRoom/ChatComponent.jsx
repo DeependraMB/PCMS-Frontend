@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { useAuth } from "../../Context/AuthContext"; // Import your authentication context
 
-const socket = io("http://localhost:5000", {
+const socket = io(`${process.env.REACT_APP_BASE_URL}`, {
   transport: ["websocket"],
 });
 
@@ -44,7 +44,7 @@ function ChatComponent() {
 
   const fetchInitialMessages = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/messages"); // Replace with your actual API endpoint
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/messages`); // Replace with your actual API endpoint
       const initialMessages = await response.json();
       
       setMessages(initialMessages);
@@ -58,7 +58,7 @@ function ChatComponent() {
 
   const fetchInitialUsers = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/users");
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users`);
       const initialUsers = await response.json();
       setUsers(initialUsers.name);
     } catch (error) {

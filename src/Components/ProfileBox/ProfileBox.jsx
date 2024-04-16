@@ -28,7 +28,7 @@ function ProfileBox({ name, email, department, role, lastname, profilephoto }) {
           </div>
           <div className="py-3">
             <Avatar
-              src={`http://localhost:5000/get-profile-photo/get-profile-photo/get-profile-photo/${profilephoto}`}
+              src={`${process.env.REACT_APP_BASE_URL}/get-profile-photo/get-profile-photo/get-profile-photo/${profilephoto}`}
               alt="User Avatar"
               sx={{
                 width: "220px",

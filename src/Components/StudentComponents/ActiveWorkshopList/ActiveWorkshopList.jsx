@@ -21,7 +21,7 @@ const WorkshopList = () => {
   const fetchWorkshops = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/workshop/get-workshop"
+        `${process.env.REACT_APP_BASE_URL}/workshop/get-workshop`
       );
       setWorkshops(response.data.data);
     } catch (error) {
@@ -38,7 +38,7 @@ const WorkshopList = () => {
 
   const registerParticipant = async (workshopId) => {
     try {
-      const response = await axios.post("http://localhost:5000/workshop/workshop-participants", {
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/workshop/workshop-participants`, {
         workshopId,
         name,
         email,
@@ -112,7 +112,7 @@ const WorkshopList = () => {
                   <CardMedia
                     component="img"
                     height="140"
-                    image={`http://localhost:5000/workshop/get-poster/${workshop.poster.slice(
+                    image={`${process.env.REACT_APP_BASE_URL}/workshop/get-poster/${workshop.poster.slice(
                       8
                     )}`}
                     alt={workshop.workshop_title}

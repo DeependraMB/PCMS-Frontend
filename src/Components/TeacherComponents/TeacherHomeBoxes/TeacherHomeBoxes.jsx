@@ -19,7 +19,7 @@ function TeacherHomeBoxes() {
     // Fetch both teacher data and department name
     axios
       .get(
-        `http://localhost:5000/get-user-byid/get-user-byid/get-user-byid/${auth._id}`
+        `${process.env.REACT_APP_BASE_URL}/get-user-byid/get-user-byid/get-user-byid/${auth._id}`
       )
       .then((response) => {
         setTeacher({
@@ -27,7 +27,7 @@ function TeacherHomeBoxes() {
         });
 
         return axios.get(
-          `http://localhost:5000/get-department-name/get-department-name/get-department-name/${response.data.departmentId}`
+          `${process.env.REACT_APP_BASE_URL}/get-department-name/get-department-name/get-department-name/${response.data.departmentId}`
         );
       })
       .then((response) => {
@@ -51,7 +51,7 @@ function TeacherHomeBoxes() {
     // Replace "user@example.com" with the actual user's email or get it from your authentication context
     const userEmail = "user@example.com";
 
-    axios.get(`http://localhost:5000/get-skills-details/get-skills-details/get-skills-details/${auth.email}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/get-skills-details/get-skills-details/get-skills-details/${auth.email}`)
       .then(response => {
         setSkillDetails(response.data);
         console.log(response.data);

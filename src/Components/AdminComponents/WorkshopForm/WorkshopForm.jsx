@@ -180,7 +180,7 @@ const WorkshopForm = () => {
         formData.append("poster", poster);
   
         const response = await fetch(
-          "http://localhost:5000/workshop/add-workshop",
+          `${process.env.REACT_APP_BASE_URL}/workshop/add-workshop`,
           {
             method: "POST",
             body: formData,

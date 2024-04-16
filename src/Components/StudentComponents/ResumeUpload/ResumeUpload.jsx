@@ -39,7 +39,7 @@ const ResumeUpload = () => {
       formData.append("pdf", resume);
 
       const response = await axios.post(
-        "http://localhost:5000/resume-ats-checker/resume-ats-checker",
+        `${process.env.REACT_APP_BASE_URL}/resume-ats-checker/resume-ats-checker`,
         formData,
         {
           headers: {

@@ -25,7 +25,7 @@ function StudentHomeBoxes() {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/get-user-byid/get-user-byid/get-user-byid/${auth._id}`
+        `${process.env.REACT_APP_BASE_URL}/get-user-byid/get-user-byid/get-user-byid/${auth._id}`
       )
       .then((response) => {
         setStudent({
@@ -33,7 +33,7 @@ function StudentHomeBoxes() {
         });
 
         return axios.get(
-          `http://localhost:5000/get-department-name/get-department-name/get-department-name/${response.data.departmentId}`
+          `${process.env.REACT_APP_BASE_URL}/get-department-name/get-department-name/get-department-name/${response.data.departmentId}`
         );
       })
       .then((response) => {
@@ -55,7 +55,7 @@ function StudentHomeBoxes() {
 
     axios
       .get(
-        `http://localhost:5000/get-skills-details/get-skills-details/get-skills-details/${auth.email}`
+        `${process.env.REACT_APP_BASE_URL}/get-skills-details/get-skills-details/get-skills-details/${auth.email}`
       )
       .then((response) => {
         setSkillDetails(response.data);
@@ -72,11 +72,11 @@ function StudentHomeBoxes() {
     try {
       const response = await axios.get(
         // Replace with your actual API endpoint
-        `http://localhost:5000/send-notification/received-notifications/${auth.email}`
+        `${process.env.REACT_APP_BASE_URL}/send-notification/received-notifications/${auth.email}`
       );
       setNotifications(response.data.length);
 
-      const notesResponse = await axios.get("http://localhost:5000/get-pdfs");
+      const notesResponse = await axios.get(`${process.env.REACT_APP_BASE_URL}/get-pdfs`);
       setNotes(notesResponse.data.length);
     } catch (error) {
       console.error("Error fetching notifications:", error);

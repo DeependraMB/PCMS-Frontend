@@ -158,7 +158,7 @@ function SkillsForm({ onNext, onBack }) {
     ) {
       try {
         const res = await axios.post(
-          "http://localhost:5000/studentdetails/skillsdetails",
+          `${process.env.REACT_APP_BASE_URL}/studentdetails/skillsdetails`,
           skillsData,
           {
             headers: {
@@ -181,7 +181,7 @@ function SkillsForm({ onNext, onBack }) {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/get-skills-details/get-skills-details/get-skills-details/${studentEmail}`
+          `${process.env.REACT_APP_BASE_URL}/get-skills-details/get-skills-details/get-skills-details/${studentEmail}`
         );
         console.log(res);
         setStudentData(res.data);

@@ -19,7 +19,7 @@ const SharedJobs = () => {
 
   const fetchApprovedJobs = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/alumni/get-job-by-Id', formData);
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/alumni/get-job-by-Id`, formData);
       console.log(response.data.job)
       const jobsArray = Array.isArray(response.data.job) ? response.data.job : [response.data.job];
 

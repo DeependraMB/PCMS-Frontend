@@ -36,7 +36,7 @@ const ShowFeedback = () => {
   const [negativeFeedbacks, setNegativeFeedbacks] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/feedback/get-feedback`)
+    fetch(`${process.env.REACT_APP_BASE_URL}/feedback/get-feedback`)
       .then((response) => response.json())
       .then((data) => setFeedbackData(data))
       .catch((error) => console.error("Error fetching feedback data:", error));

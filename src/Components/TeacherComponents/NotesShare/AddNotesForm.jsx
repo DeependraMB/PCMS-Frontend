@@ -71,7 +71,7 @@ function AddNotesForm({ onNext }) {
     if (isFormValid) {
       try {
         const res = await axios.post(
-          "http://localhost:5000/notesshare/notesshare",
+          `${process.env.REACT_APP_BASE_URL}/notesshare/notesshare`,
           formData,
           {
             headers: {

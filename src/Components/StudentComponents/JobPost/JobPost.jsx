@@ -12,7 +12,7 @@ function JobPost() {
 
   const fetchApprovedJobs = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/alumni/get-job');
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/alumni/get-job`);
       // Filter only approved jobs
       const approvedJobs = response.data.jobs.filter(job => job.status === 'Approved');
       setApprovedJobs(approvedJobs);

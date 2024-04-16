@@ -479,12 +479,12 @@ function PersonalInfoForm({ onNext }) {
     if (isValid) {
       try {
         const res = await axios.post(
-          "http://localhost:5000/studentdetails/personaldetails",
+          `${process.env.REACT_APP_BASE_URL}/studentdetails/personaldetails`,
           personalData
         );
 
         const res1 = await axios.post(
-          "http://localhost:5000/studentdetails/userdetails",
+          `${process.env.REACT_APP_BASE_URL}/studentdetails/userdetails`,
           userData
         );
         onNext({ personalData, userData }, "personalData");
@@ -503,13 +503,13 @@ function PersonalInfoForm({ onNext }) {
       try {
         // First API call
         const userByIdResponse = await axios.get(
-          `http://localhost:5000/get-user-byid/get-user-byid/get-user-byid/${studentId}`
+          `${process.env.REACT_APP_BASE_URL}/get-user-byid/get-user-byid/get-user-byid/${studentId}`
         );
         setStudentData(userByIdResponse.data);
 
         // Second API call
         const userByEmailResponse = await axios.get(
-          `http://localhost:5000/get-user-by-email/get-user-by-email/${studentEmail}`
+          `${process.env.REACT_APP_BASE_URL}/get-user-by-email/get-user-by-email/${studentEmail}`
         );
 
         // Merge data from both responses

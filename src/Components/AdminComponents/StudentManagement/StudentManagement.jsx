@@ -392,7 +392,7 @@ export default function StudentManagement({onChange}) {
   const fetchSkillsData = async () => {
     try {
       const skillsResponse = await axios.get(
-        "http://localhost:5000/get-skills-details/get-skills-details"
+        `${process.env.REACT_APP_BASE_URL}/get-skills-details/get-skills-details`
       );
       const skillsData = skillsResponse.data;
       setSkills(skillsData);
@@ -405,26 +405,26 @@ export default function StudentManagement({onChange}) {
     try {
       // Fetch data from personal
       const personalResponse = await axios.get(
-        "http://localhost:5000/get-personal-details/get-personal-details"
+        `${process.env.REACT_APP_BASE_URL}/get-personal-details/get-personal-details`
       );
       const personalData = personalResponse.data;
       console.log(personalData);
 
       // Fetch data from education
       const educationResponse = await axios.get(
-        "http://localhost:5000/get-education-details/get-education-details"
+        `${process.env.REACT_APP_BASE_URL}/get-education-details/get-education-details`
       );
       const educationData = educationResponse.data;
       console.log(educationData);
 
       // Fetch data from skills
       const skillsResponse = await axios.get(
-        "http://localhost:5000/get-skills-details/get-skills-details"
+        `${process.env.REACT_APP_BASE_URL}/get-skills-details/get-skills-details`
       );
       const skillsData = skillsResponse.data;
 
       // Fetch users and combine data
-      const response = await axios.get("http://localhost:5000/get-students/get-students");
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/get-students/get-students`);
       const usersData = response.data.map((user, index) => {
         const userEducationData =
           educationData.find((education) => education.email === user.email) ||
@@ -466,7 +466,7 @@ export default function StudentManagement({onChange}) {
   
     try {
       const response = await axios.post(
-        "http://localhost:5000/update-student-status/update-student-status",
+        `${process.env.REACT_APP_BASE_URL}/update-student-status/update-student-status`,
         {
           email,
           newStatus,
@@ -602,7 +602,7 @@ export default function StudentManagement({onChange}) {
 
       console.log(dataToSend);
       const response = await axios.post(
-        "http://localhost:5000/send-notification/send-notification",
+        `${process.env.REACT_APP_BASE_URL}/send-notification/send-notification`,
         dataToSend,
         {
           headers: { "Content-Type": "application/json" },

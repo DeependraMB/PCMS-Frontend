@@ -40,7 +40,7 @@ function PasswordReset() {
   const onSubmit = async (formData) => {
     try {
       const response = await fetch(
-        "http://localhost:5000/user/reset-password/forgot-password",
+        `${process.env.REACT_APP_BASE_URL}/user/reset-password/forgot-password`,
         {
           method: "POST",
           headers: {

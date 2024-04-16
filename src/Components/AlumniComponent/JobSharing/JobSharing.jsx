@@ -62,7 +62,7 @@ const JobSharingForm = () => {
       try {
         console.log(formData);
         const response = await axios.post(
-          "http://localhost:5000/alumni/job-share",
+          `${process.env.REACT_APP_BASE_URL}/alumni/job-share`,
           formData
         );
 
