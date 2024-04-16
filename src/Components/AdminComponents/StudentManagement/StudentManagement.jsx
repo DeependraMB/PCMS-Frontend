@@ -352,7 +352,7 @@ export default function StudentManagement({onChange}) {
   const fetchDepartmentName = async (departmentId) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/get-department-name/get-department-name/get-department-name/${departmentId}`
+        `${process.env.REACT_APP_BASE_URL}/get-department-name/get-department-name/get-department-name/${departmentId}`
       );
       return response.data.departmentName;
     } catch (error) {
@@ -367,7 +367,7 @@ export default function StudentManagement({onChange}) {
   const fetchPersonalData = async () => {
     try {
       const personalResponse = await axios.get(
-        "http://localhost:5000/get-personal-details/get-personal-details"
+        `${process.env.REACT_APP_BASE_URL}/get-personal-details/get-personal-details`
       );
       const personalData = personalResponse.data;
       setPersonal(personalData);
@@ -380,7 +380,7 @@ export default function StudentManagement({onChange}) {
   const fetchEducationData = async () => {
     try {
       const educationResponse = await axios.get(
-        "http://localhost:5000/get-education-details/get-education-details"
+        `${process.env.REACT_APP_BASE_URL}/get-education-details/get-education-details`
       );
       const educationData = educationResponse.data;
       setEducation(educationData);

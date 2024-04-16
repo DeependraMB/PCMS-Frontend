@@ -12,7 +12,7 @@ function JobManagement() {
 
   useEffect(() => {
     
-    fetch('http://localhost:5000/alumni/get-job')
+    fetch(`${process.env.REACT_APP_BASE_URL}/alumni/get-job`)
       .then(response => response.json())
       .then(data => {
         
@@ -23,7 +23,7 @@ function JobManagement() {
 
   const handleStatusChange = async (jobId, newStatus) => {
     try {
-      await axios.post('http://localhost:5000/alumni/update-job-status', { jobId, newStatus });
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/alumni/update-job-status`, { jobId, newStatus });
       
       setJobs(prevJobs =>
         prevJobs.map(job => (job._id === jobId ? { ...job, status: newStatus } : job))

@@ -14,7 +14,7 @@ const CSVAddAlumni = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await axios.post('http://localhost:5000/alumni/register-csv', formData);
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/alumni/register-csv`, formData);
 
       console.log(response.data);
       // Handle success or display a message

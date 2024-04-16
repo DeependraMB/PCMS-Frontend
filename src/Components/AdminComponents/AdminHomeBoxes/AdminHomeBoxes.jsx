@@ -20,7 +20,7 @@ function AdminHomeBoxes() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/get-students/get-students")
+      .get(`${process.env.REACT_APP_BASE_URL}/get-students/get-students`)
       .then((response) => {
         if (Array.isArray(response.data)) {
           const count = response.data.length;
@@ -34,7 +34,7 @@ function AdminHomeBoxes() {
       });
 
     axios
-      .get("http://localhost:5000/get-teachers/get-teachers")
+      .get(`${process.env.REACT_APP_BASE_URL}/get-teachers/get-teachers`)
       .then((response) => {
         if (Array.isArray(response.data)) {
           const count = response.data.length;

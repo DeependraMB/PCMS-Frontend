@@ -28,6 +28,8 @@
     password: yup.string().required("Password is required"),
   });
 
+  console.log(process.env.REACT_APP_BASE_URL);
+
   function LoginForm() {
     useEffect(() => {
       const checkData = sessionStorage.getItem("auth");
@@ -61,7 +63,7 @@
       //event.preventDefault();
       try {
         axios
-          .post("http://localhost:5000/user/login/login", formData)
+          .post(`${process.env.REACT_APP_BASE_URL}/user/login/login`, formData)
           .then((res) => {
             console.log(res.data)
             if (res.data && res.data.success) {

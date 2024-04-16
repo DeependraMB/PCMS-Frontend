@@ -70,7 +70,7 @@ export default function AlumniAddForm() {
     async function fetchDepartments() {
       try {
         const response = await axios.get(
-          "http://localhost:5000/departments/departments"
+          `${process.env.REACT_APP_BASE_URL}/departments/departments`
         );
         setDepartments(response.data);
       } catch (error) {
@@ -87,7 +87,7 @@ export default function AlumniAddForm() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/alumni/register/register",
+        `${process.env.REACT_APP_BASE_URL}/alumni/register/register`,
         data
       );
 
